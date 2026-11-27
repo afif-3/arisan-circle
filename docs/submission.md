@@ -2,11 +2,11 @@
 
 Deadline: **Dec 18, 2026, 01:00 UTC**. Submit from the builder account
 **affif-agent**. Everything below is copy-paste ready. Status Nov 27, 2026:
-the demo video file is finished and ready to upload; the realm package is
-submitted on Onyx (addpkg tx at height 1441376) and **passed the official
-GPAS checks at 2026-11-27 03:10:15 UTC** — under Onyx's `inert` submission
-policy it becomes browsable/callable once a chain package approver's enable
-tx lands (automatic for packages that pass; monitored agent-side).
+SUBMITTED (BUIDL 52085, "Under Review") and the realm is **LIVE on Onyx** —
+addpkg tx at height 1441376, **GPAS checks passed 2026-11-27 03:10:15 UTC**,
+approver enable landed the same day (package status `live`), and a full
+3-round circle (KeluargaBesar) was completed on-chain:
+https://latest.testnets.gno.land/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan/circle/0
 
 ## Project name
 
@@ -53,10 +53,10 @@ script.
 - GitHub repo: https://github.com/afif-3/arisan-circle
 - Live deployment (Onyx testnet):
   https://latest.testnets.gno.land/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan
-  _(package submitted on-chain Nov 27, 2026, addpkg tx
+  _(package LIVE on Onyx since Nov 27, 2026 — addpkg tx
   `YobxWn/8+Y31mj7GZNX/z6WDABndjqfA2XzN8c3aFlA=` at height 1441376; GPAS checks
-  passed 2026-11-27 03:10:15 UTC; the page serves as soon as the chain
-  approver's enable tx lands — Onyx's standard two-phase deploy)_
+  passed 2026-11-27 03:10:15 UTC; approver enable landed; full 3-round circle
+  completed on-chain at /circle/0)_
 - Demo video: upload `video/arisan-circle-demo.mp4` from the repo (2 min 02 s,
   assembled from the real local-devnet demo run: full circle lifecycle, the
   realm's rendered payout-history page, and the rejected script-bypass attempt;

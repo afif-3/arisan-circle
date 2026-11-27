@@ -29,16 +29,16 @@ wallet can be moved by an intermediary contract or script acting in their name.
 - Testnet: **Onyx / Test17** (`onyx-1`), RPC `https://rpc.onyx.testnets.gno.land:443`
 - Realm: `gno.land/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan`
 - Browse: <https://latest.testnets.gno.land/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan>
-- Status (Nov 27, 2026): **submitted on-chain** — the `MsgAddPackage` tx
-  `YobxWn/8+Y31mj7GZNX/z6WDABndjqfA2XzN8c3aFlA=` landed at Onyx height 1441376.
-  Onyx runs the chain's `inert` code-submission policy, so a new package is
-  first parked and becomes callable once a chain package approver enables it.
-  The package **passed the official GPAS checks on 2026-11-27 03:10:15 UTC**
-  (status page: <https://gpas.latest.testnets.gno.land/?path=gno.land/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan>);
-  the browse link above goes live as soon as the approver's enable tx lands.
-  The end-to-end lifecycle is verified on a local devnet with the identical
-  realm code, and two funded member accounts are staged on Onyx so the full
-  circle can be exercised on-chain the moment the realm is enabled.
+- Status (Nov 27, 2026): **LIVE on Onyx** — the `MsgAddPackage` tx
+  `YobxWn/8+Y31mj7GZNX/z6WDABndjqfA2XzN8c3aFlA=` landed at Onyx height 1441376,
+  the package **passed the official GPAS checks on 2026-11-27 03:10:15 UTC**
+  (status page: <https://gpas.latest.testnets.gno.land/?path=gno.land/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan>),
+  and the chain approver's enable has landed (package status: `live`).
+  The full lifecycle has been exercised on Onyx itself: circle
+  **KeluargaBesar** (3 members, 100000 ugnot per member per round) ran all
+  3 rounds to **finished**, the pot paying out in turn to each member —
+  proof: <https://latest.testnets.gno.land/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan/circle/0>.
+  The same lifecycle is also verified on a local devnet with identical code.
 
 ## How it works
 
