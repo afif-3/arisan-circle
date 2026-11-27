@@ -21,7 +21,7 @@ RPC="http://localhost:26657"
 WEB="http://localhost:8888"
 
 cd "$(dirname "$0")/../realm"
-PKG_PATH="$(grep '^module' gnomod.toml | awk '{print $2}')"
+PKG_PATH="$(sed -n 's/^module *= *\"\(.*\)\"/\1/p' gnomod.toml)"
 echo "Realm: $PKG_PATH"
 
 addkey() { printf '%s\n%s\n' "$PASS" "$PASS" | script -qec "gnokey add $1" /dev/null >/dev/null 2>&1; }
@@ -39,7 +39,8 @@ echo "member2: $MEMBER2"
 gnodev . > /tmp/arisan-gnodev.log 2>&1 &
 DEVNET_PID=$!
 trap 'kill $DEVNET_PID 2>/dev/null || true' EXIT
-for i in $(seq 1 30); do curl -s "$RPC/status" >/dev/null && break; sleep 1; done
+for i in $(seq 1 60); do curl -s --noproxy '*' "$RPC/status" 2>/dev/null | grep -q node_info && break; sleep 1; done
+sleep 3 # let gnodev finish its initial reset before the first tx
 
 echo "== CreateCircle(KeluargaBesar, 100000, 2) ==";  call creator CreateCircle "-args KeluargaBesar -args 100000 -args 2"
 echo "== JoinCircle(0) ==";                          call member2 JoinCircle "-args 0"
@@ -62,7 +63,11 @@ func main(cur realm) {
 }
 EOF
 echo "== Bypass attempt: maketx run script calling CreateCircle =="
-printf '%s\n' "$PASS" | script -qec "gnokey maketx run -gas-fee 10000ugnot -gas-wanted 5000000 -chainid dev -remote $RPC creator /tmp/arisan-attack.gno" /dev/null 2>&1 | grep -o 'must be called directly by a user account' | head -1 \
-  && echo "REJECTED as designed." || echo "!! unexpected: script call was not rejected"
+attack_out="$(printf '%s\n' "$PASS" | script -qec "gnokey maketx run -gas-fee 10000ugnot -gas-wanted 5000000 -chainid dev -remote $RPC creator /tmp/arisan-attack.gno" /dev/null 2>&1 || true)"
+if printf '%s' "$attack_out" | grep -q 'must be called directly by a user account'; then
+  echo "REJECTED as designed: 'arisan: must be called directly by a user account'"
+else
+  echo "!! unexpected: script call was not rejected"
+fi
 
 echo "Demo complete. gnoweb was at $WEB/r/${PKG_PATH#gno.land/r/} while the devnet ran."

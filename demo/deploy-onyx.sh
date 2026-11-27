@@ -18,7 +18,7 @@ RPC="https://rpc.onyx.testnets.gno.land:443"
 CHAIN="onyx-1"
 KEY="tavernbuilder"
 cd "$(dirname "$0")/../realm"
-PKG_PATH="$(grep '^module' gnomod.toml | awk '{print $2}')"
+PKG_PATH="$(sed -n 's/^module *= *\"\(.*\)\"/\1/p' gnomod.toml)"
 
 echo "Deploying $PKG_PATH to $CHAIN via $RPC"
 gnokey maketx addpkg \

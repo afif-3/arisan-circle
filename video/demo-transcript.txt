@@ -1,0 +1,41 @@
+Realm: gno.land/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan
+creator: g1gmxsclc5g3u7s64yzaw232m9eeden50prh9mdp
+member2: g15zvsnvsdnh99ft9h2cr7zuplcqk53c6fk88nnp
+== CreateCircle(KeluargaBesar, 100000, 2) ==
+OK!
+== JoinCircle(0) ==
+OK!
+== StartCircle(0) ==
+OK!
+== Round 1: Contribute creator ==
+OK!
+== Round 1: Contribute member2 (payout!) ==
+OK!
+== Round 2: Contribute creator ==
+OK!
+== Round 2: Contribute member2 (payout!) ==
+OK!
+== Final state (Render circle/0) ==
+height: 0
+data: # KeluargaBesar
+
+- Status: **finished**
+- Creator: `g1gmxsclc5g3u7s64yzaw232m9eeden50prh9mdp`
+- Contribution: 0.1 GNOT (100000 ugnot) per member, per round
+- Pot per round: 0.2 GNOT
+
+## Members (in payout order)
+
+1. `g1gmxsclc5g3u7s64yzaw232m9eeden50prh9mdp`
+2. `g15zvsnvsdnh99ft9h2cr7zuplcqk53c6fk88nnp`
+
+## Payout history
+
+- Round 1: `g1gmxsclc5g3u7s64yzaw232m9eeden50prh9mdp`
+- Round 2: `g15zvsnvsdnh99ft9h2cr7zuplcqk53c6fk88nnp`
+
+[← All circles](./)
+
+== Bypass attempt: maketx run script calling CreateCircle ==
+REJECTED as designed: 'arisan: must be called directly by a user account'
+Demo complete. gnoweb was at http://localhost:8888/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan while the devnet ran.

@@ -8,11 +8,31 @@ round's contributions only until the round completes, then pays out automaticall
 
 Built for the **Gnome Tavern Hackathon** (DoraHacks).
 
-## Live deployment
+## Why arisan, why Gno
+
+An arisan is a piece of social infrastructure: a savings club that works because
+everyone knows everyone — and breaks the moment one organizer disappears with the
+pot or one member stops paying after their early turn. The failure modes are
+exactly the ones a deterministic on-chain rotation removes: the contribution is
+fixed, the order is fixed, the payout is automatic, and the history can never be
+rewritten.
+
+Gno fits this unusually well. The realm *is* the whole application — state, rules
+and even the web pages (via `Render`) live in one audited piece of code, with no
+separate backend, database or admin server to trust or to shut down. Gno's
+permission model also gives the key safety property for a money club for free:
+a realm can require that every action comes from a direct user call, so nobody's
+wallet can be moved by an intermediary contract or script acting in their name.
+
+## Deployment — Onyx testnet
 
 - Testnet: **Onyx / Test17** (`onyx-1`), RPC `https://rpc.onyx.testnets.gno.land:443`
 - Realm: `gno.land/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan`
 - Browse: <https://latest.testnets.gno.land/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan>
+- Status (Nov 27, 2026): deployment scripted and ready (`demo/deploy-onyx.sh`);
+  it runs the moment the deployer address is funded from the Onyx faucet (a
+  captcha-gated claim). The end-to-end lifecycle below is verified on a local
+  devnet with the identical realm code.
 
 ## How it works
 
@@ -33,21 +53,33 @@ stays readable on-chain forever.
 
 Home page lists every circle with status, contribution and member count. Each
 circle has a detail page (`circle/<id>`) with members in payout order, who already
-paid this round, who receives next, and the payout history. Sample output from a
-completed two-member circle (local devnet run):
+paid this round, who receives next, and the payout history. Actual output of
+`Render("circle/0")` after a complete two-member circle (local devnet run of
+`demo/demo.sh`, Nov 27, 2026 — full transcript in `video/demo-transcript.txt`):
 
 ```
 # KeluargaBesar
 
 - Status: **finished**
+- Creator: `g1gmxsclc5g3u7s64yzaw232m9eeden50prh9mdp`
 - Contribution: 0.1 GNOT (100000 ugnot) per member, per round
 - Pot per round: 0.2 GNOT
 
+## Members (in payout order)
+
+1. `g1gmxsclc5g3u7s64yzaw232m9eeden50prh9mdp`
+2. `g15zvsnvsdnh99ft9h2cr7zuplcqk53c6fk88nnp`
+
 ## Payout history
 
-- Round 1: `g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg`
-- Round 2: `g1kzystp5z8r7cswq8wwse4c57gge3szv5jp23uc`
+- Round 1: `g1gmxsclc5g3u7s64yzaw232m9eeden50prh9mdp`
+- Round 2: `g15zvsnvsdnh99ft9h2cr7zuplcqk53c6fk88nnp`
 ```
+
+A 2-minute demo video assembled from that same real run (terminal session +
+rendered circle page + the rejected bypass attempt) is in
+[`video/arisan-circle-demo.mp4`](video/arisan-circle-demo.mp4); it can be
+regenerated with `video/build_video.py`.
 
 ## Security notes
 
@@ -99,6 +131,8 @@ realm/            the realm source (arisan.gno), its tests, gnomod.toml
 demo/demo.sh      local devnet walkthrough incl. the bypass-rejection check
 demo/deploy-onyx.sh   Onyx testnet deployment + smoke test
 docs/             demo video script and the DoraHacks submission text
+video/            demo video (mp4), the real demo transcript it was built from,
+                  and the frame builder script
 ```
 
 ## License
