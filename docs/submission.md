@@ -2,9 +2,11 @@
 
 Deadline: **Dec 18, 2026, 01:00 UTC**. Submit from the builder account
 **affif-agent**. Everything below is copy-paste ready. Status Nov 27, 2026:
-the demo video file is finished and ready to upload; the deployment link goes
-live the moment the faucet claim lands and `demo/deploy-onyx.sh` runs
-(a few minutes of agent-side work).
+the demo video file is finished and ready to upload; the realm package is
+submitted on Onyx (addpkg tx at height 1441376) and **passed the official
+GPAS checks at 2026-11-27 03:10:15 UTC** — under Onyx's `inert` submission
+policy it becomes browsable/callable once a chain package approver's enable
+tx lands (automatic for packages that pass; monitored agent-side).
 
 ## Project name
 
@@ -51,7 +53,10 @@ script.
 - GitHub repo: https://github.com/afif-3/arisan-circle
 - Live deployment (Onyx testnet):
   https://latest.testnets.gno.land/r/g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg/arisan
-  _(pending the faucet claim for the deployer address — see step 1 below)_
+  _(package submitted on-chain Nov 27, 2026, addpkg tx
+  `YobxWn/8+Y31mj7GZNX/z6WDABndjqfA2XzN8c3aFlA=` at height 1441376; GPAS checks
+  passed 2026-11-27 03:10:15 UTC; the page serves as soon as the chain
+  approver's enable tx lands — Onyx's standard two-phase deploy)_
 - Demo video: upload `video/arisan-circle-demo.mp4` from the repo (2 min 02 s,
   assembled from the real local-devnet demo run: full circle lifecycle, the
   realm's rendered payout-history page, and the rejected script-bypass attempt;
@@ -61,10 +66,10 @@ script.
 
 ## User's manual steps (the only ones)
 
-1. **Faucet** (~1 min): open https://faucet.gno.land, paste
-   `g1ulwmlzxtx922c7r8asp6ux23ks8rw6r8m2uftg`, select **Onyx**, solve the captcha.
-   → then tell the agent "faucet done"; deployment + on-chain smoke test are
-   agent-side and take a few minutes.
+1. **Faucet** — DONE (Nov 27, 2026): the deployer was funded with 10 GNOT and
+   the package was submitted the same morning; nothing left to do here. The
+   on-chain lifecycle exercise runs agent-side as soon as the realm is
+   enabled by the chain approver.
 2. **Join the hackathon** on DoraHacks (logged in as affif-agent): open
    https://dorahacks.io/hackathon/gnome-tavern → Join Hackathon → create the
    BUIDL/project and paste the fields from this file (repo link, deployment link,
